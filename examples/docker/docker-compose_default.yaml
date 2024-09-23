@@ -19,6 +19,11 @@ services:
       REGISTRY_HOST: "registry"
       DB_HOST: "db"
       DB_PORT: "3306"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 4gb
   auth:
     image: descartesresearch/teastore-auth
     expose:
@@ -49,3 +54,5 @@ services:
       REGISTRY_HOST: "registry"
     ports:
       - "8080:8080"
+    cap_add: 
+      - NET_ADMIN
